@@ -72,14 +72,14 @@ def clean_games(schedule: pd.DataFrame) -> pd.DataFrame:
     if (games['home_id'] == games['away_id']).any():
         raise ValueError('Teams cannot play against themselves')
     
-    if (games['home_score', 'away_score'] < 0).any().any():
+    if (games[['home_score', 'away_score']] < 0).any().any():
         raise ValueError('Invalid scores detected (negative scores)')
     
     if (games['home_score'] == games['away_score']).any():
         raise ValueError('Completed games cannot have tied games')
     
     # Calculate home_win
-    games['home_win'] = games['home_score'] > games['away_score'].astype(int)
+    games['home_win'] = (games['home_score'] > games['away_score']).astype(int)
 
     # Sort games chronilogicaly and by game_id
     games = games.sort_values(['game_date', 'game_id']).reset_index(drop=True)
