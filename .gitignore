@@ -1,0 +1,22 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# Jupyter
+.ipynb_checkpoints/
+
+# macOS
+.DS_Store
+
+# Environment variables and API keys
+.env
+.env.*
+
+# Data (can be regenerated)
+data/raw/
+data/processed/
+
+# Model artifacts
+*.pkl
+*.joblib
