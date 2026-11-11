@@ -32,7 +32,10 @@ def clean_games(schedule: pd.DataFrame) -> pd.DataFrame:
         (
             (schedule['season_type'] == 2) &
             (schedule['status_type_name'] == 'STATUS_FINAL') &
-            (schedule['status_type_completed'] == True) 
+            (schedule['status_type_completed'] == True) &
+            (schedule['type_abbreviation'] == 'STD') &
+            (schedule['home_id'].between(1,30)) &
+            (schedule['away_id'].between(1,30))
         ),
         required_cols
     ].copy()
